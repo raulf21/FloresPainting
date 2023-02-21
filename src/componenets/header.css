@@ -1,0 +1,40 @@
+  .header {
+    position: sticky;
+    height: 70px;
+    width: 100%;
+    background-color: #00500D;
+  }
+  
+  .navbar {
+    background-color: #00500D;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  .nav-link-custom {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
+  
+  .book-button {
+    background-color: #D13C40;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 32px;
+    border-radius: 4px;
+    margin-left: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .book-button:hover {
+    background-color: #fff;
+    color: #D13C40;
+    border: 2px solid #D13C40;
+  }
