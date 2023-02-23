@@ -1,13 +1,14 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+
 import { Container, Button, Row, Col, Card } from 'react-bootstrap';
 import Portfolio from '../componenets/Portfolio';
 import ContactPage from '../componenets/ContactUs';
 import AboutUs from '../componenets/AboutUs';
-import Services from '../componenets/Services';
 import ServiceAreas from '../componenets/ServiceAreas';
+import Services from '../componenets/Services';
 
 function HomePage() {
-
   return (
     <div>
       <div
@@ -26,7 +27,6 @@ function HomePage() {
         <p style={{ color: 'black' }}>Transforming Your Property With Color</p>
       </div>
       <AboutUs id="about" />
-
       <section id="services">
         <Container>
         <h2>Our Services</h2>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
+import axios from 'axios'
 
 const ContactPage = () => {
   const [name, setName] = useState('');
@@ -18,9 +19,27 @@ const ContactPage = () => {
     setMessage(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Code to submit the form data to the server
+    try {
+      const response = await axios.post('http://localhost:5000/contact', {
+        name,
+        email,
+        message,
+      });
+      const data = response.data;
+      if (data.success) {
+        // Show a success message
+        alert('Your message has been sent!');
+      } else {
+        // Show an error message
+        alert('Sorry, there was an error. Please try again later.');
+      }
+    } catch (error) {
+      console.error(error);
+      // Show an error message
+      alert('Sorry, there was an error. Please try again later.');
+    }
   };
 
   return (
@@ -67,6 +86,6 @@ const ContactPage = () => {
         </div>
       </Container>
   );
-};
+}
 
 export default ContactPage;
