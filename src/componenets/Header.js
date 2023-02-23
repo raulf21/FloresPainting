@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container, Nav, Navbar, Button} from 'react-bootstrap'
 import './header.css';
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 function Header(){
@@ -9,16 +10,25 @@ function Header(){
         <header>
         <Navbar collapseOnSelect expand="lg" varient="light" >
         <Container>
-            <Navbar.Brand href="#home" style={{ color: '#fff' }}>Flores Painting</Navbar.Brand>
+            <LinkContainer to="/">
+                <Navbar.Brand style={{ color: '#fff' }}>Flores Painting</Navbar.Brand>
+            </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" bg="light" >
-                <Nav.Link className="nav-link-custom" href="#About">About</Nav.Link>
-                <Nav.Link className="nav-link-custom" href="#Services">Services</Nav.Link>
-                <Nav.Link className="nav-link-custom" href="#Portfolio">Portfolio</Nav.Link>
-                <Nav.Link href="#About" className="nav-link-custom">About</Nav.Link>
+                <LinkContainer to="/virtual">
+                    <Nav.Link className="nav-link-custom">Virtual Room</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/services">
+                    <Nav.Link className="nav-link-custom">Services</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to="/portfolio">
+                    <Nav.Link className="nav-link-custom">Portfolio</Nav.Link>
+                </LinkContainer>
             </Nav>
-            <Button className="book-button">Book a Service</Button>
+            <LinkContainer to="/booking">
+                <Button className="book-button">Book a Service</Button>
+            </LinkContainer>
             </Navbar.Collapse>
         </Container>
         </Navbar>

@@ -1,24 +1,32 @@
 import Header from "./componenets/Header";
 import Footer from "./componenets/Footer";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Services from "./componenets/Services";
+import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import HomePage from "./screens/Homescreen";
+import BookingPage from "./componenets/CalendarView";
+import { Container } from "react-bootstrap";
+import RoomPainter from "./componenets/RoomPainter";
+import AboutUs from "./componenets/AboutUs";
+import Services from "./componenets/Services";
+
 
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header/>
       <main className="py-3">
-        <BrowserRouter>
+        <Container>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/about" element={<AboutUs/>}/>
+            <Route path="/services" element={<Services/>}/>
+            <Route path="/booking" element={<BookingPage/>}/>
+            <Route path="/virtual" element={<RoomPainter/>}/>
           </Routes>
-      </BrowserRouter>
+        </Container>
       </main>
       <Footer/>
-    </div>
+    </Router>
   );
 }
 

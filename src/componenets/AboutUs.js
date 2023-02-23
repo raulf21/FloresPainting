@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
+import axios from 'axios';
 
 function AboutUs() {
+  const [about, setAbout] = useState("");
+
+  useEffect(() => {
+    async function fetchAbout() {
+      console.log('AboutUs component mounted');
+      try {
+        const response = await axios.get('http://localhost:5000/about');
+        console.log('Response from /about:', response.data);
+        setAbout(response.data.about);
+      } catch (error) {
+        console.error('Error fetching /about:', error);
+      }
+    }
+    fetchAbout();
+  }, []);
+
   return (
     <Container>
       <Row>
         <Col md={6}>
           <h2>About Our Company</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, velit eget gravida vestibulum, lorem ipsum
-            aliquet leo, sit amet tincidunt nisl dolor sed magna. Suspendisse potenti. Maecenas porttitor sem in ex bibendum
-            aliquam. Duis at leo vel turpis convallis suscipit ac eget velit.
-          </p>
-          <p>
-            Sed euismod, velit eget gravida vestibulum, lorem ipsum aliquet leo, sit amet tincidunt nisl dolor sed magna.
-            Suspendisse potenti. Maecenas porttitor sem in ex bibendum aliquam. Duis at leo vel turpis convallis suscipit ac
-            eget velit.
-          </p>
+          {about && <p>{about}</p>}
         </Col>
         <Col md={6}>
           <Image src="https://via.placeholder.com/400x300" roundedCircle />
@@ -26,4 +34,4 @@ function AboutUs() {
   )
 }
 
-export default AboutUs
+export default AboutUs;
