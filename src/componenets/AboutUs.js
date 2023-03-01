@@ -7,13 +7,10 @@ function AboutUs() {
 
   useEffect(() => {
     async function fetchAbout() {
-      console.log('AboutUs component mounted');
       try {
         const response = await axios.get('http://localhost:5000/about');
-        console.log('Response from /about:', response.data);
         setAbout(response.data.about);
       } catch (error) {
-        console.error('Error fetching /about:', error);
       }
     }
     fetchAbout();

@@ -1,46 +1,45 @@
-import React from "react";
-import { Container,Row,Col,Card } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Portfolio(){
-    const projects = [
-        {
-          title: 'Project 1',
-          image: 'https://via.placeholder.com/300x200',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non posuere ex. Fusce sit amet dapibus enim, ut posuere magna.',
-          link: 'https://example.com/project1'
-        },
-        {
-          title: 'Project 2',
-          image: 'https://via.placeholder.com/300x200',
-          description: 'Pellentesque in lectus eget massa posuere facilisis. Aliquam eu magna nec mi eleifend sagittis vel sit amet est.',
-          link: 'https://example.com/project2'
-        },
-        {
-          title: 'Project 3',
-          image: 'https://via.placeholder.com/300x200',
-          description: 'Nulla feugiat purus in quam sollicitudin, vel pharetra sapien vehicula. Sed gravida, mauris in lobortis sagittis, nisi felis congue eros, a maximus nisl purus non enim.',
-          link: 'https://example.com/project3'
-        }
-      ]
-    return (
-        <Container>
-            <h2 className = "my-4">Portfolio</h2>
-            <Row>
-            {projects.map((project, index) => (
-                <Col md={4} key={index}>
-                    <Card>
-                    <Card.Img variant="top" src={project.image} />
-                    <Card.Body>
-                        <Card.Title>{project.title}</Card.Title>
-                        <Card.Text>{project.description}</Card.Text>
-                        <a href={project.link} target="_blank" rel="noreferrer" className="btn btn-primary">View project</a>
-                    </Card.Body>
-                    </Card>
-                </Col>
-            ))}
-            </Row>
-        </Container>
+function Portfolio({ limit }) {
+  const [projects, setProjects] = useState([]);
 
-    )
+  useEffect(() => {
+    async function fetchProjects() {
+      const response = await axios.get('http://localhost:5000/projects');
+      setProjects(response.data.projects);
+    }
+    fetchProjects();
+  }, []);
+
+  return (
+    <div>
+      <Container>
+        <Row>
+          {projects.slice(0, limit).map((project) => (
+            <Col md={4} key={project.id}>
+              <Card style={{ height: '100%' }}>
+                <Card.Img variant="top" src={project.image} />
+                <Card.Body>
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Text>{project.description}</Card.Text>
+                  <Button variant="primary">Learn More</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        {limit < projects.length && (
+          <Link to="/project">
+            <br/>
+            <Button variant="primary">View All Projects</Button>
+          </Link>
+        )}
+      </Container>
+    </div>
+  );
 }
-export default Portfolio
+
+export default Portfolio;

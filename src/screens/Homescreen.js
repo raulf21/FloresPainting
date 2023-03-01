@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-
 import { Container, Button, Row, Col, Card } from 'react-bootstrap';
 import Portfolio from '../componenets/Portfolio';
 import ContactPage from '../componenets/ContactUs';
@@ -36,7 +35,14 @@ function HomePage() {
         </Container>
       </section>
 
-      <Portfolio id="portfolio" />
+      <section id="projects">
+        <Container>
+          <h2>Our Portfolio</h2>
+          <Row>
+            <Portfolio limit={3}/>
+          </Row>
+        </Container>
+      </section>
 
       <ContactPage id="contact" />
       <ServiceAreas/>
