@@ -22,7 +22,7 @@ function Header(){
                 <LinkContainer to="/services">
                     <Nav.Link className="nav-link-custom">Services</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/portfolio">
+                <LinkContainer to="/projects">
                     <Nav.Link className="nav-link-custom">Portfolio</Nav.Link>
                 </LinkContainer>
             </Nav>

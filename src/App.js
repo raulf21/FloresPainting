@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import HomePage from "./screens/Homescreen";
 import BookingPage from "./componenets/CalendarView";
 import { Container } from "react-bootstrap";
-import RoomPainter from "./componenets/RoomPainter";
 import AboutUs from "./componenets/AboutUs";
 import Services from "./componenets/Services";
+import Portfolio from "./componenets/Portfolio";
+import PaintVisualizer from "./componenets/VirtualRoom";
 
 
 
@@ -21,7 +22,8 @@ function App() {
             <Route path="/about" element={<AboutUs/>}/>
             <Route path="/services" element={<Services/>}/>
             <Route path="/booking" element={<BookingPage/>}/>
-            <Route path="/virtual" element={<RoomPainter/>}/>
+            <Route path="/projects" element={<Portfolio/>}/>
+            <Route path="/virtual" element={<PaintVisualizer/>}/>
           </Routes>
         </Container>
       </main>
